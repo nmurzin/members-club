@@ -1,4 +1,4 @@
-import {Controller, Get, Post} from '@nestjs/common';
+import {Controller, Get, Post, Render} from '@nestjs/common';
 import { MembersService } from "./members.service";
 
 @Controller()
@@ -6,8 +6,9 @@ export class MembersController {
     constructor(private readonly membersService: MembersService) {}
 
     @Get()
+    @Render('index')
     findAll() {
-        return this.membersService.getMembersList();
+        return {membersList: this.membersService.getMembersList()};
     }
 
     @Post()
