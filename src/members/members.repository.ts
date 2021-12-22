@@ -12,4 +12,8 @@ export class MembersRepository {
     create(newItem: MemberType):void{
         this.membersList.push(newItem);
     }
+
+    getLastInsertedId():number {
+        return this.membersList.length + 1;
+    }
 }
