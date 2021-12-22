@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {MembersRepository} from "./members.repository";
+import {CreateMemberDto} from "./create-member.dto";
 
 @Injectable()
 export class MembersService {
@@ -9,7 +10,9 @@ export class MembersService {
         return this.membersRepository.getALl();
     }
 
-    createMember(){
-        this.membersRepository.create({id: 0, email: "john.doe@gmail.com", name:"John Doe", registration_date: new Date()})
+    createMember(createMemberDto: CreateMemberDto){
+        this.membersRepository.create(Object.assign({}, {id: 0, registration_date: new Date()}, createMemberDto));
+
+        return this.membersRepository.getALl();
     }
 }
