@@ -26,26 +26,30 @@
 
     <div>
         <h3>Members</h3>
-        <table>
-            <thead>
-            <tr>
-                <td>#</td>
-                <td>Name</td>
-                <td>Email</td>
-                <td>Registration date</td>
-            </tr>
-            </thead>
-            <tbody>
-                {{#each membersList}}
-                    <tr>
-                        <td>{{id}}</td>
-                        <td>{{name}}</td>
-                        <td>{{email}}</td>
-                        <td>{{formatDate registration_date}}</td>
-                    </tr>
-                {{/each}}
-            </tbody>
-        </table>
+        {{#if membersList}}
+            <table>
+                <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Registration date</td>
+                </tr>
+                </thead>
+                <tbody>
+                    {{#each membersList}}
+                        <tr>
+                            <td>{{id}}</td>
+                            <td>{{name}}</td>
+                            <td>{{email}}</td>
+                            <td>{{formatDate registration_date}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <span>There is no members yet.</span>
+        {{/if}}
     </div>
 </body>
 </html>
