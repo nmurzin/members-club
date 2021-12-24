@@ -9,3 +9,6 @@ dev-start:
 
 install:
 	docker run -it -v $(pwd):/usr/src/app -w /usr/src/app -t $(tag) npm install
+
+format:
+	docker run -it -v $(pwd):/usr/src/app -w /usr/src/app -t $(tag) npm run format
