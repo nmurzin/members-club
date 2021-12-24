@@ -1,4 +1,4 @@
-import {Body, Controller, Get, Post, Render} from '@nestjs/common';
+import {Body, Controller, Get, Post, Render, ValidationPipe} from '@nestjs/common';
 import { MembersService } from "./members.service";
 import {CreateMemberDto} from "./create-member.dto";
 import {CreateMemberValidationPipe} from "./create-member-validation.pipe";
@@ -16,7 +16,7 @@ export class MembersController {
 
     @Post()
     @Render('index')
-    create(@Body(CreateMemberValidationPipe) createMemberDto: CreateMemberDto): MembersControllerResponse {
+    create(@Body(CreateMemberValidationPipe, ValidationPipe) createMemberDto: CreateMemberDto): MembersControllerResponse {
         return {membersList: this.membersService.createMember(createMemberDto), message: "New member successfully added!", isSuccessful: true};
     }
 }

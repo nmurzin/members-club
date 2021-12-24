@@ -7,7 +7,7 @@ import {HttpExceptionFilter} from "./http-exception.filter";
 
 @Module({
     controllers: [MembersController],
-    providers: [MembersService, MembersRepository,    {
+    providers: [MembersService, MembersRepository, {
         provide: APP_FILTER,
         useClass: HttpExceptionFilter,
     }],

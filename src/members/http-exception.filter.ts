@@ -12,7 +12,8 @@ export class HttpExceptionFilter implements ExceptionFilter {
 
         // This is just for pretty-looking UI. Don't like the idea to override response for that
         response.render('index', {
-            message: exception.message,
+            // @ts-ignore
+            message: exception.getResponse()?.message.join(','),
             membersList: this.membersService.getMembersList(),
         });
     }

@@ -8,7 +8,7 @@ export class CreateMemberValidationPipe implements PipeTransform {
 
     transform(createMemberDto: CreateMemberDto, metadata: ArgumentMetadata) {
         if(this.membersService.getMemberByEmail(createMemberDto.email)){
-            throw new BadRequestException('Member with same email is already exist!');
+            throw new BadRequestException(['Member with same email is already exist!']);
         }
 
         return createMemberDto;
