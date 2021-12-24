@@ -10,10 +10,10 @@ async function bootstrap() {
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.useStaticAssets(join(__dirname, '..', 'public'));
 
-  hbs.registerHelper("formatDate", function(datetime) {
+  hbs.registerHelper('formatDate', function (datetime) {
     const date = new Date(datetime);
     return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`;
-  })
+  });
 
   app.setViewEngine('hbs');
 

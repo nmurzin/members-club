@@ -1,10 +1,10 @@
 import { IsEmail, IsNotEmpty } from 'class-validator';
 
-export class CreateMemberDto{
-    @IsNotEmpty()
-    name: string;
+export class CreateMemberDto {
+  @IsNotEmpty()
+  name: string;
 
-    @IsNotEmpty()
-    @IsEmail()
-    email: string;
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
 }
