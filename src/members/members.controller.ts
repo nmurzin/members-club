@@ -1,8 +1,8 @@
-import {Body, Controller, Get, Post, Render, UsePipes} from '@nestjs/common';
+import {Body, Controller, Get, Post, Render} from '@nestjs/common';
 import { MembersService } from "./members.service";
 import {CreateMemberDto} from "./create-member.dto";
-import {MemberType} from "./member.type";
 import {CreateMemberValidationPipe} from "./create-member-validation.pipe";
+import {MembersControllerResponse} from "./response.type";
 
 @Controller()
 export class MembersController {
@@ -10,13 +10,13 @@ export class MembersController {
 
     @Get()
     @Render('index')
-    findAll() {
-        return {membersList: this.membersService.getMembersList()};
+    findAll(): MembersControllerResponse {
+        return {membersList: this.membersService.getMembersList(), isSuccessful: true};
     }
 
     @Post()
     @Render('index')
-    create(@Body(CreateMemberValidationPipe) createMemberDto: CreateMemberDto): { membersList: MemberType[] } {
-        return {membersList: this.membersService.createMember(createMemberDto)};
+    create(@Body(CreateMemberValidationPipe) createMemberDto: CreateMemberDto): MembersControllerResponse {
+        return {membersList: this.membersService.createMember(createMemberDto), message: "New member successfully added!", isSuccessful: true};
     }
 }
